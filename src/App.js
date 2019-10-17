@@ -12,14 +12,31 @@ import './App.css';
 //   );
 // }
 class App extends Component {
-	render(){
+	state = {
+		persons:  [
+			{
+				name: 'Max',
+				age: 28
+			},
+			{
+				name: 'Sridhar',
+				age: 27
+			},
+			{
+				name: 'Prema',
+				age: 30
+			}
+		]
+	}
+	render() {
 		return (
 			<div className="App">
-				<h1>Hello this is Preetham Sridhar</h1>
+				<h1>Hello This is Preetham Sridhar</h1>
 				<h2>India</h2>
-				<Person name="Preetham" age="25"/>
-				<Person name="Aditya" age="27"> My hobbies </Person>
-				<Person name="Greesh" age="30"/>
+				<button> Switch Name </button>
+				<Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+				<Person name={this.state.persons[1].name} age={this.state.persons[1].age}> My hobbies </Person>
+				<Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
 			</div>
 		);
 		// return React.createElement('div', 
