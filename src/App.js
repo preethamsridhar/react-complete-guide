@@ -5,33 +5,30 @@ import './App.css';
 class App extends Component {
 	state = {
 		persons:  [
-			{ name: 'Max', age: 28 },
-			{ name: 'Sridhar', age: 27 },
-			{ name: 'Prema', age: 30 }
+			{ id:'sdadfga', name: 'Max', age: 28 },
+			{ id:'ksdfafg', name: 'Sridhar', age: 27 },
+			{ id:'tuiario', name: 'Prema', age: 30 }
 		],
 		otherState: "nothing so far",
 		showPersons: false
 	}
 	
-	switchNameHandler = (newName) => {
-		console.log("switch name button pressed!");
-		this.setState(
-			{
-				persons: [
-					{ name: newName, age: 10 },
-					{ name: 'Sridhar', age: 27 },
-					{ name: 'Prema', age: 30 }	
-				]
-			}
-		)
+	deletePersonHandler = (personIndex) => {
+		// const persons = this.state.persons; //mutable assignment
+		// const persons = this.state.persons.slice(); //immutable assignment
+		const persons = [...this.state.persons];
+		persons.splice(personIndex, 1);
+		this.setState({
+			persons: persons
+		})
 	}
 
 	nameChangedHandler = (event) => {
 		this.setState({
 			persons: [
-				{ name: "Max", age: 10 },
-				{ name: event.target.value, age: 27 },
-				{ name: 'Stephanie', age: 30 }
+				{ id:'sdadfga', name: "Max", age: 10 },
+				{ id:'ksdfafg', name: event.target.value, age: 27 },
+				{ id:'tuiario', name: 'Stephanie', age: 30 }
 			]
 		})
 	}
@@ -53,18 +50,18 @@ class App extends Component {
 		if (this.state.showPersons) {
 			persons = (
 				<div>
-						<Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-						<Person 
-							name={this.state.persons[1].name}  
-							click={() => this.switchNameHandler('Preethu!')}  
-							age={this.state.persons[1].age}
-							changed= {this.nameChangedHandler}
-							> 
-							My hobbies 
-						</Person>
-						<Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-						<p>{this.state.otherState}</p>
-					</div> 
+					{this.state.persons.map( (person, index) => {
+						return (
+							<Person 
+								click={this.deletePersonHandler.bind(this, index)}
+								name={person.name}
+								age={person.age}
+								key={person.id}
+								changed={this.nameChangedHandler}
+								/>
+						);
+					})}
+				</div> 
 			)
 		}
 
