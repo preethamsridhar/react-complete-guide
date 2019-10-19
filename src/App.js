@@ -1,16 +1,7 @@
-// import React from 'react';
 import React, { Component } from 'react'
 import Person from './Person/Person'
-// import logo from './logo.svg';
 import './App.css';
 
-// function App() {
-//   return (
-// 		<div className="App">
-// 			<h1>Hello this is Preetham Sridhar</h1>
-// 		</div>
-//   );
-// }
 class App extends Component {
 	state = {
 		persons:  [
@@ -44,11 +35,22 @@ class App extends Component {
 		})
 	}
 	render() {
+		const style = {
+			backgroundColor: 'white',
+			font: 'inherit',
+			border: '1px solid blue',
+			padding: '8px',
+			cursor: 'pointer'
+		}
 		return (
 			<div className="App">
 				<h1>Hello This is Preetham Sridhar</h1>
 				<h2>India</h2>
-				<button onClick={() => this.switchNameHandler('Preetham')}> Switch Name </button>
+				<button 
+					style={style}
+					onClick={() => this.switchNameHandler('Preetham')}> 
+					Switch Name 
+				</button>
 				<Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
 				<Person 
 					name={this.state.persons[1].name}  
