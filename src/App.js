@@ -29,7 +29,7 @@ class App extends Component {
 		})
 		console.log(personIndex)
 
-		const person = {
+		const person = { 
 			...this.state.persons[personIndex]
 		};
 
@@ -61,14 +61,14 @@ class App extends Component {
 		if (this.state.showPersons) {
 			persons = (
 				<div>
-					{ this.state.persons.map((person, index) => {
+					{ this.state.persons.map( (person, index) => {
 						return (
 							<Person 
-								click = {this.deletePersonHandler.bind(this, index)}
-								name = { person.name }
-								age = { person.age }
-								key = { person.id }
-								changed = { (event) => this.nameChangedHandler(event, person.id) }
+								click={this.deletePersonHandler.bind(this, index) }
+								name={person.name}
+								age={person.age}
+								key={person.id}   // for Virtual DOM to work efficiently
+								changed={(event) => this.nameChangedHandler(event, person.id)}
 							/>
 						);
 					})}
