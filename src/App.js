@@ -78,9 +78,22 @@ class App extends Component {
 			style.backgroundColor = "red";
 		}
 
+		// let classes = ['red', 'bold'].join(" ");
+		let classes_array = []
+		if (this.state.persons.length <= 2) {
+			classes_array.push('red')
+		}
+		if (this.state.persons.length <= 1) {
+			classes_array.push('bold')
+		}
+		let classes = classes_array.join(" ");
+
+		console.log(classes)
+
 		return (
 			<div className="App">
-				<h1></h1>
+				<h1> Hi this is react complete guide </h1>
+				<p className={classes}> From Udemy </p>
 				<button 
 					style={style}
 					// onClick={() => this.switchNameHandler('Preetham')}> 
