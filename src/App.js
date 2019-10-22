@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Person from './Person/Person'
-import './App.css';
+import styles from './App.module.css';
 
 class App extends Component {
 	state = {
@@ -49,16 +49,9 @@ class App extends Component {
 		this.setState({showPersons: !doesShow})
 	}
 	render() {
-		const style = {
-			backgroundColor: 'green',
-			color: 'white',
-			font: 'inherit',
-			border: '1px solid blue',
-			padding: '8px',
-			cursor: 'pointer',
-		}
-
 		let persons = null;
+		let btnClass = "";
+
 		if (this.state.showPersons) {
 			persons = (
 				<div>
@@ -75,7 +68,7 @@ class App extends Component {
 					})}
 				</div> 
 			)
-			style.backgroundColor = "red";
+			btnClass = styles.Red;
 		}
 
 		// let classes = ['red', 'bold'].join(" ");
@@ -91,11 +84,11 @@ class App extends Component {
 		console.log(classes)
 
 		return (
-			<div className="App">
+			<div className={ styles.App }>
 				<h1> Hi this is react complete guide </h1>
 				<p className={classes}> From Udemy </p>
 				<button 
-					style={style}
+					className={btnClass}
 					// onClick={() => this.switchNameHandler('Preetham')}> 
 					onClick={this.togglePersonsHandler}>
 					Toggle Persons 
