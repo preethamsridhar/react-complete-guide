@@ -15,7 +15,6 @@ class ErrorBoundary extends Component {
   }
   
   render() {
-    let renderingElement = '';
     console.log("inside error boundary")
     if (this.state.hasError) {
       return (
