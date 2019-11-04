@@ -1,12 +1,16 @@
 .Person {
-	background-color: lightblue;
 	width: 60%;
 	margin: 16px auto;
-	border: 3px solid #eee;
+	border: 3px solid black;
 	box-shadow: 0 2px 3px #ccc;
 	padding: 16px;
 	text-align: center;
-	border-radius: 20px;
+}
+
+.Person .deleteClass {
+	background-color: Red;
+	padding: 4px;
+	color: white;
 }
 
 @media (min-width: 500px) {

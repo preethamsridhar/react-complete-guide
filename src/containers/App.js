@@ -4,16 +4,34 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-	state = {
-		persons:  [
-			{ id:'sdadfga', name: 'Max', age: 28 },
-			{ id:'ksdfafg', name: 'Sridhar', age: 27 },
-			{ id:'tuiario', name: 'Prema', age: 30 }
-		],
-		otherState: "nothing so far",
-		showPersons: false
+
+	constructor(props) {
+		super(props);
+		console.log("[App.js] constructor")
+		this.state = {
+			persons:  [
+				{ id:'sdadfga', name: 'Max', age: 28 },
+				{ id:'ksdfafg', name: 'Sridhar', age: 27 },
+				{ id:'tuiario', name: 'Prema', age: 30 }
+			],
+			otherState: "nothing so far",
+			showPersons: false
+		}
 	}
 	
+	static getDerivedStateFromProps(props, state) {
+		console.log("[App.js] getDerivedStateFromProps", props);
+		return state;
+	}
+
+	// componentWillMount() {
+	// 	console.log("[App.js] componentWillMount")
+	// }
+
+	componentDidMount() {
+		console.log("[App.js] componentDidMount");
+	}
+
 	deletePersonHandler = (personIndex) => {
 		// const persons = this.state.persons; //mutable assignment
 		// const persons = this.state.persons.slice(); //immutable assignment
@@ -26,11 +44,10 @@ class App extends Component {
 
 	nameChangedHandler = (event, id) => {
 		console.log("id used", id);
-		console.log("person dict", this.state.persons);
 		const personIndex = this.state.persons.findIndex( p => {
 			return p.id === id;
 		})
-		console.log(personIndex)
+		console.log("person id", personIndex)
 
 		const person = { 
 			...this.state.persons[personIndex]
@@ -53,6 +70,7 @@ class App extends Component {
 
 
 	render() {
+		console.log("[App.js] render");
 		let persons = null;
 
 		if (this.state.showPersons) {
@@ -70,6 +88,7 @@ class App extends Component {
 		return (
 			<div className={ styles.App }>
 				<Cockpit 
+					title={this.props.appTitle}
 					showPersons={this.state.showPersons}
 					persons={this.state.persons}
 					togglePerson={this.togglePersonsHandler}

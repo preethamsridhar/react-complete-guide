@@ -17,8 +17,8 @@ export default function Cockpit(props) {
   
   return (
     <div className={classes.Cockpit}>
-      <h1> Hi this is react complete guide </h1>
-				<p className={classes_array.join(' ')}> From Udemy </p>
+      <h1> {props.title} </h1>
+				<p className={classes_array.join(' ')}> React Application </p>
 				<button 
 					className={btnClass}
 					// onClick={() => this.switchNameHandler('Preetham')}> 
