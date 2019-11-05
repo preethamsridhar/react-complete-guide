@@ -1,15 +1,17 @@
 .Cockpit button {
-  border: 2px solid blue;
+  border: none;
   padding: 16px;
   background-color: green;
   font: inherit;
   color: white;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
+  outline: none;
 }
 
 .Cockpit button:hover{
-  border: 2px solid blue;
+  outline: none;
+  border: none;
   padding: 16px;
   background-color: lightgreen;
   font: inherit;
@@ -17,10 +19,12 @@
 }
 
 .Cockpit button.Red {
+  outline: none;
   background-color: red;
 }
 
 .Cockpit button.Red:hover{
+  outline: none;
   background-color: pink;
   color: black;
 }

@@ -15,7 +15,8 @@ class App extends Component {
 				{ id:'tuiario', name: 'Prema', age: 30 }
 			],
 			otherState: "nothing so far",
-			showPersons: false
+			showPersons: false,
+			showCockpit: true
 		}
 	}
 	
@@ -82,6 +83,7 @@ class App extends Component {
 	render() {
 		console.log("[App.js] render");
 		let persons = null;
+		let cockpit = null;
 
 		if (this.state.showPersons) {
 			persons = (
@@ -94,15 +96,23 @@ class App extends Component {
 				</div> 
 			)
 		}
-
-		return (
-			<div className={ styles.App }>
+		if (this.state.showCockpit) {
+			cockpit = (
 				<Cockpit 
 					title={this.props.appTitle}
 					showPersons={this.state.showPersons}
 					persons={this.state.persons}
 					togglePerson={this.togglePersonsHandler}
 				/>
+			)
+		}
+
+		return (
+			<div className={ styles.App }>
+				<button onClick={()=> this.setState({
+					showCockpit: false
+				})}>Remove Cockpit</button>
+				{cockpit}
 				{persons}
 			</div> 
 		);

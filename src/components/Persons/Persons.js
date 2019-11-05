@@ -8,8 +8,15 @@ class Persons extends Component {
   // }
   
   shouldComponentUpdate(nextProps, nextState, nextContext) {
-     console.log('[Persons.js] shouldComponentUpdate')
-     return true
+     console.log('%c[Persons.js] shouldComponentUpdate', 'font-weight: bold; background-color: yellow;')
+     console.log("nextProps: ", nextProps.persons)
+     console.log('this.props: ', this.props.persons)
+     if (nextProps.persons !== this.props.persons) {
+       return true;
+     }
+     else {
+       return false;
+     }
   }
 
   getSnapshotBeforeUpdate = (prevProps, prevState) => {
@@ -21,6 +28,10 @@ class Persons extends Component {
     console.log('[Persons.js] componentDidUpdate');
     console.log("prevProps: ", prevProps);
     console.log("snapshot: ", snapshot);
+  }
+
+  componentWillUnmount() {
+    console.log("[Persons.js] componentWillUnmount");
   }
 
   render() {

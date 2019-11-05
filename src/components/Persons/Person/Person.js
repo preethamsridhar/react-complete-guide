@@ -6,6 +6,9 @@ class Person extends Component {
 	// if (rand_number < 0.7) {
 	// 	throw new Error('Something went wrong');
 	// }
+	componentWillUnmount() {
+		console.log("[Person.js] componentWillUnmount");
+	}
 	render(){
 		console.log('[Person.js] render');
 		return (
