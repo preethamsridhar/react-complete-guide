@@ -3,6 +3,8 @@ import styles from './Person.module.css';
 import withClass from '../../../hoc/withClass';
 import Aux from '../../../hoc/Aux';
 
+import PropTypes from 'prop-types';
+
 class Person extends Component {
 	// const rand_number = Math.random();
 	// if (rand_number < 0.7) {
@@ -24,5 +26,12 @@ class Person extends Component {
 		)
 	}
 }
+
+Person.propTypes = {
+	click: PropTypes.func,
+	name: PropTypes.string,
+	age: PropTypes.number,
+	changed: PropTypes.func
+};
 
 export default withClass(Person, styles.Person);
