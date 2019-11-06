@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styles from './Person.module.css';
-// import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
+import Aux from '../../../hoc/Aux';
 
 class Person extends Component {
 	// const rand_number = Math.random();
@@ -14,14 +15,14 @@ class Person extends Component {
 		console.log('[Person.js] render');
 		return (
 			// <div className={styles.Person}>
-			<React.Fragment>
+			<Aux>
 				<p> I'm a {this.props.name} and I am {this.props.age} years old. {this.props.children} </p>
 				<input type="text" onChange={this.props.changedPerson} value={this.props.name}></input>
 				<button className={styles.deleteClass} onClick={this.props.click}> Delete </button>
-			</React.Fragment>
+			</Aux>
 			// </div>
 		)
 	}
 }
 
-export default Person;
+export default withClass(Person, styles.Person);
